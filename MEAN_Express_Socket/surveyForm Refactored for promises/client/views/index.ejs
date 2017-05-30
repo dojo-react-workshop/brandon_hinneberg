@@ -1,0 +1,50 @@
+<!DOCTYPE hitml>
+<html>
+
+<head>
+    <title>
+        <%= title%>
+    </title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src='./../js/main.js'></script>
+</head>
+
+<body>
+    <div class='main-content'>
+        <form action='/user' method='post'>
+            <div>
+                <label for='name'>Your Name: </label>
+                <input type='text' id='name' name='User_name'>
+            </div>
+            <div>
+                <label for='dojo_location'>Dojo Location: </label>
+                <input list='dojo_location' name='dojo_location'>
+                <datalist id='dojo_location'>
+                    <option value = 'Cananda'></option>
+                    <option value = 'USA'></option>
+                    <option value = 'Turkey'></Option>
+                    <option value = 'Chile'></option>
+                </datalist>
+            </div>
+            <div>
+                <label for='fav_lang'>Favorite Language: </label>
+                <input list='fav_lang' name='fav_lang'>
+                <datalist id='fav_lang'>
+                    <option value='Javascript'>
+                    <option value='Python'>
+                    <option value='Node'>
+                </datalist>
+            </div>
+            <div>
+                <label for='comment_box'>Comment (optional): </label>
+                <input id='comment_box' name='comment_box' type='textarea'>
+            </div>
+            <div>
+                <input type='submit' value='Submit'>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
