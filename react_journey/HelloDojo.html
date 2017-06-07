@@ -19,13 +19,11 @@
 
 <body>
     <div id='root'></div>
-    <div id='react'></div>
     <script>
         'use strict'
-        const reactContainer = document.getElementById('react');
-        let text = 'A'
-        renderReact();
+        const reactContainer = document.getElementById('root');
 
+        renderReact();
 
         function renderReact() {
             ReactDOM.render(

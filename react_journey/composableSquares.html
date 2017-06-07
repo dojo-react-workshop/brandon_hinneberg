@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+<head>
+    <title></title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='node_modules/react/dist/react.js'></script>
+    <script src='node_modules/react-dom/dist/react-dom.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+    <style media="screen">
+        .demo {
+            border: 1px solid #ccc;
+            margin: 1em;
+            padding: 1em;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id='app1'></div>
+    <div id='app2'></div>
+    <script>
+        'use strict'
+        const app1Container = document.getElementById('app1');
+        const app2Container = document.getElementById('app2');
+
+        // My inital go at it
+        ReactDOM.render(
+            React.createElement(
+                'div', {
+                    style: {
+                        display: 'flex'
+                    }
+                },
+                React.createElement('div', {
+                        style: {
+                            backgroundColor: 'blue'
+                        }
+                    },
+                    React.createElement('h3', {
+                        style: {
+                            color: 'white'
+                        }
+                    }, 'White on blue!')),
+                React.createElement('div', {
+                    style: {
+                        backgroundColor: 'red'
+                    }
+                }, React.createElement('h3', {
+                    style: {
+                        color: 'blue'
+                    }
+                }, 'blue on red!')),
+
+                React.createElement('div', {
+                    style: {
+                        backgroundColor: 'pink'
+                    }
+                }, React.createElement('h3', {
+                    style: {
+                        color: 'green'
+                    }
+                }, 'green on pink!'))), appContainer);
+
+        // Charlie's approach
+
+        const squares = [{
+            background: 'blue',
+            text: 'white'
+        }, {
+            background: 'aquamarine',
+            text: 'brown'
+        }, {
+            background: 'purple',
+            text: 'lightblue'
+        }]
+
+        const Container = (props) => {
+            const squares = props.squares.map((squareObj, idx) => {
+                return <Square key = {
+                    idx
+                }
+                colorData = {
+                    squareObj
+                }
+                />
+            })
+            return ( <
+                    div >
+                    <
+                    h1 > Take a look at my squares! < /h1> {
+                    squares
+                } <
+                /div>
+        )
+
+        }
+
+        const Square = (props) => {
+            const {
+                colorData
+            } = props;
+            const style = {
+                height: '275px',
+                width: '275px',
+                display: 'inline-block',
+                fontSize: '20px',
+                color: colorData.text,
+                backgroundColor: colorData.background
+            };
+
+            const text = `${style.color} on ${style.backgroundColor}`;
+
+            return <div style = {
+                style
+            } > {
+                text
+            } < /div>
+        }
+
+        ReactDOM.render( <
+            Container squares = {
+                squares
+            }
+            />,
+            document.getElementById('app2')
+        )
+    </script>
+
+</body>
+
+</html>

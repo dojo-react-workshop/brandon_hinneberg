@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>react voting library</title>
+    <meta charset="UTF-8">
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    <script>
+        'use strict'
+        const reactContainer = document.getElementById('react');
+        const libraryTile = [{
+            voteCount: 14,
+            libName: 'Ract'
+        }, {
+            voteCount: 2,
+            libName: 'Vue'
+        }, {
+            voteCount: 9,
+            libName: 'Angular'
+        }, {
+            voteCount: 7,
+            libName: 'Ember'
+        },];
+        const Container = (props) => {
+            const builtTiles = props.storedTiles.map((tileObj) => {
+                return <Tile key = {
+                    tileObj.libName
+                }
+                tileData = {
+                    tileObj
+                }
+                    /> }) return (<
+                        div>
+                        <
+                        h1>Vote Your JS Library! < /h1> {
+            builtTiles
+        } <
+                /div>
+            )
+        }
+        const Tile = (props) => {
+            const {
+                tileData
+            } = props;
+            return (<
+                div className = 'libTile' >
+                <
+                div className = 'voteCount' >
+                    <
+                    div className = 'voteCountTxt' > {
+                        tileData.voteCount
+                    } < /div> < /
+            div > <
+                div className = 'tileTextDiv' >
+                    <
+                    p className = 'tileText' > {
+                        tileData.libName
+                    } < /p> < /
+            div > <
+                div className = 'voteInc' >
+                    <
+                    img className = 'plusIcon'
+            src = './plusIcon.png'
+            alt = 'vote'
+            onClick = {
+                    (c) => {
+            alert(tileData.voteCount + 1)
+        }
+                }
+        /> < /
+        div > <
+                /div>
+            )
+        }
+        ReactDOM.render(<
+            Container storedTiles = {
+                libraryTile
+            }
+            />, reactContainer)
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="react">
+        </div>
+    </div>
+</body>
+
+</html>
